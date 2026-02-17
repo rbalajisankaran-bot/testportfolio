@@ -6,12 +6,7 @@ const About = () => {
           <span className="section-label">Get to know me</span>
           <h2 className="section-title">About Me</h2>
         </div>
-        <div className="about-content">
-          <div className="about-image">
-            <div className="image-wrapper">
-              <div className="image-placeholder"></div>
-            </div>
-          </div>
+        <div className="about-content-centered">
           <div className="about-text">
             <h3>Passionate about building exceptional software solutions</h3>
             <p>

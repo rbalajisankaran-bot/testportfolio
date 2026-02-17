@@ -432,6 +432,27 @@ section {
     align-items: center;
 }
 
+.about-content-centered {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content-centered .about-text {
+    max-width: 100%;
+}
+
+.about-content-centered .about-text h3 {
+    text-align: center;
+}
+
+.about-content-centered .about-text p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .about-image {
     position: relative;
 }
