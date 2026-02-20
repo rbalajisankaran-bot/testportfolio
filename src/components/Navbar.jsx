@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = ({ isScrolled }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,9 +9,9 @@ const Navbar = ({ isScrolled }) => {
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-container">
-        <a href="#" className="logo">
+        <a href="#" className="logo" aria-label="Balaji Sankaran - Home">
           Balaji<span className="logo-dot">.</span>
         </a>
         <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
@@ -22,15 +23,19 @@ const Navbar = ({ isScrolled }) => {
           <li><a href="#skills" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Skills</a></li>
           <li><a href="#contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a></li>
         </ul>
-        <button 
-          className={`mobile-toggle ${isMobileMenuOpen ? 'active' : ''}`}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle navigation"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div className="nav-actions">
+          <ThemeToggle />
+          <button
+            className={`mobile-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle navigation"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </nav>
   );
