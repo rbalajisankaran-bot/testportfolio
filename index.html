@@ -37,13 +37,237 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="/vite.svg" />
 
-  <!-- Fonts: Preconnect for performance -->
+  <!--
+    CRITICAL CSS — Inlined to avoid render-blocking CSS file for first paint.
+    This covers the hero section and basic layout so FCP happens immediately.
+    The full CSS is loaded asynchronously below.
+  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #0a0a0f;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none
+    }
+
+    .logo-dot {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none
+    }
+
+    .nav-link {
+      color: #b8b8c8;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem
+    }
+
+    .mobile-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #fff
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0
+    }
+
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #6366f1, transparent);
+      top: -250px;
+      right: -200px
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #8b5cf6, transparent);
+      bottom: -150px;
+      left: -150px
+    }
+
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #ec4899, transparent);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 6rem 0
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .title-line {
+      display: block;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-greeting {
+      font-size: 1.25rem;
+      color: #b8b8c8;
+      margin-bottom: 1rem
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #b8b8c8;
+      max-width: 600px;
+      margin: 0 auto 4rem
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+      color: #fff
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1)
+    }
+
+    #root {
+      min-height: 100vh
+    }
+  </style>
+
+  <!--
+    FONTS — Loaded NON-BLOCKING using the print/onload swap trick.
+    Browser downloads font CSS in background (doesn't block FCP).
+    Once loaded, it swaps from print → all media, applying the fonts.
+    <noscript> fallback ensures fonts load even without JS.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Using display=swap for better FCP - text shows immediately with fallback font -->
-  <link
+  <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
+    as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+  </noscript>
 
   <!-- Structured Data (JSON-LD) - Rich Results for Google Search -->
   <script type="application/ld+json">
@@ -84,10 +308,12 @@
 </head>
 
 <body>
-  <!-- 
-      SSG: This div will be populated with pre-rendered HTML at build time.
-      Crawlers see full content. React hydrates this on the client for interactivity.
-    -->
+  <!-- Skip to content for screen readers -->
+  <a href="#home" class="skip-to-content">Skip to content</a>
+  <!--
+    SSG: This div will be populated with pre-rendered HTML at build time.
+    Crawlers see full content. React hydrates this on the client for interactivity.
+  -->
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
