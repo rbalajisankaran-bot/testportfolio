@@ -1,0 +1,229 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+      background: #17140F;
+      color: #F0EBE1;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    [data-theme="light"] body,
+    body[data-theme="light"] {
+      background: #F2EDE5;
+      color: #1C1C1C;
+    }
+
+    [data-theme="light"] {
+      background: #F2EDE5;
+      color: #1C1C1C;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      background: rgba(23, 20, 15, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+    }
+
+    [data-theme="light"] .navbar {
+      background: rgba(242, 237, 229, 0.88);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-style: italic;
+      color: #F0EBE1;
+      text-decoration: none;
+    }
+
+    [data-theme="light"] .logo {
+      color: #1C1C1C;
+    }
+
+    .logo-dot {
+      color: #D94F3D;
+      font-style: normal;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #9A948C;
+      text-decoration: none;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-toggle span {
+      width: 22px;
+      height: 1px;
+      background: #F0EBE1;
+      display: block;
+    }
+
+    [data-theme="light"] .mobile-toggle span {
+      background: #1C1C1C;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 0 6rem;
+      width: 100%;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: clamp(3.8rem, 11vw, 8rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      color: #F0EBE1;
+      margin-bottom: 2rem;
+    }
+
+    [data-theme="light"] .hero-title {
+      color: #1C1C1C;
+    }
+
+    .title-line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.2em;
+      margin-bottom: -0.2em;
+    }
+
+    .hero-greeting {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #E8685A;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.92rem;
+      color: #B8B0A5;
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    [data-theme="light"] .hero-greeting {
+      color: #D94F3D;
+    }
+
+    [data-theme="light"] .hero-subtitle {
+      color: #4A4540;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #E8685A;
+      color: #17140F;
+      border-color: #E8685A;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #B8B0A5;
+      border: 1px solid rgba(232, 104, 90, 0.3);
+    }
+
+    [data-theme="light"] .btn-primary {
+      background: #D94F3D;
+      color: #F2EDE5;
+      border-color: #D94F3D;
+    }
+
+    [data-theme="light"] .btn-secondary {
+      color: #4A4540;
+      border: 1px solid rgba(217, 79, 61, 0.3);
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+  
