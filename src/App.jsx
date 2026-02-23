@@ -14,8 +14,13 @@ function App() {
 
   useEffect(() => {
     // Scroll listener for navbar
+    let rafId = null;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+        rafId = null;
+      });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 

@@ -50,10 +50,10 @@ async function prerender() {
     let headTags = '';
     if (helmet) {
         headTags = [
-            helmet.title?.toString() || '',
-            helmet.meta?.toString() || '',
-            helmet.link?.toString() || '',
-            helmet.script?.toString() || '',
+            helmet.title?.toString() ?? '',
+            helmet.meta?.toString() ?? '',
+            helmet.link?.toString() ?? '',
+            helmet.script?.toString() ?? '',
         ].filter(Boolean).join('\n    ');
     }
 
