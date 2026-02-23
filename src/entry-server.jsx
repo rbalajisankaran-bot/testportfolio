@@ -1,15 +1,16 @@
-import React from 'react';
+// entry-server.jsx — SSR entry point for SSG pre-rendering
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
-import App from './App.jsx';
+import App from './App';
 
 export function render() {
     const helmetContext = {};
+
     const html = renderToString(
         <HelmetProvider context={helmetContext}>
             <App />
         </HelmetProvider>
     );
-    const { helmet } = helmetContext;
-    return { html, helmet };
+
+    return { html, helmet: helmetContext.helmet };
 }

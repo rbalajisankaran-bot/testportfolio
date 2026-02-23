@@ -7,7 +7,7 @@ const ThemeToggle = () => {
         // Read saved preference on mount
         const saved = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const dark = saved ? saved === 'dark' : prefersDark;
+        const dark = saved ? saved === 'dark' : true;
         setIsDark(dark);
         document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     }, []);
