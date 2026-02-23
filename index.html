@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8" />
 
+  <!-- DNS: start connecting to font servers at the earliest possible moment -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
   <!--
     ANTI-FLASH THEME SCRIPT — Must run before any rendering.
     Reads localStorage and sets data-theme on <html> immediately,
@@ -76,6 +82,16 @@
       color: #F0EBE1;
       line-height: 1.7;
       overflow-x: hidden;
+    }
+
+    /* Critical @font-face: tells browser to swap immediately using fallback,
+       prevents LCP from blocking on remote font download on slow mobile */
+    @font-face {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold');
     }
 
     [data-theme="light"] body,
@@ -283,13 +299,13 @@
 
 
   <!--
-    FONTS — Non-blocking. Playfair Display (editorial serif) + IBM Plex Mono (technical body).
+    FONTS — High-priority load. Playfair Display (display serif) + IBM Plex Mono (body).
+    fetchpriority=high tells mobile browser to treat this as critical, reducing LCP delay.
+    display=swap means text renders immediately with fallback font, then swaps when loaded.
   -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload"
+  <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
-    as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    media="print" onload="this.media='all'" />
   <noscript>
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
