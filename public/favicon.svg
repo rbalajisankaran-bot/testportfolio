@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Monitor screen body -->
+  <rect x="4" y="4" width="24" height="16" rx="2" fill="#17140F" stroke="#E8685A" stroke-width="1.5"/>
+  <!-- Screen inner -->
+  <rect x="6.5" y="6.5" width="19" height="11" rx="1" fill="#E8685A" opacity="0.15"/>
+  <!-- Cursor blink on screen -->
+  <rect x="9" y="10" width="6" height="1.5" rx="0.75" fill="#E8685A" opacity="0.8"/>
+  <rect x="9" y="13" width="9" height="1.5" rx="0.75" fill="#F0EBE1" opacity="0.4"/>
+  <!-- Monitor stand neck -->
+  <rect x="14" y="20" width="4" height="4" rx="0.5" fill="#2C2820"/>
+  <!-- Monitor stand base -->
+  <rect x="10" y="24" width="12" height="2" rx="1" fill="#2C2820" stroke="#E8685A" stroke-width="1"/>
+</svg>
